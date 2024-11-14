@@ -22,28 +22,28 @@ $id = trim($_GET["id"]);
 <!-- Dropzone form for file upload -->
 <form id="myDZ" class="dropzone" action="upload.php">
     <!-- Hidden input to pass the filename (ID) to the upload script -->
-	<input type="hidden" name="filename" value="<?= $id; ?>" />
+    <input type="hidden" name="filename" value="<?= $id; ?>" />
 </form>
 
 <p>The <b>image</b> will be automatically uploaded once selected.</p>
 <p>This was the implementation object, use it wisely:<br>
-<code>let myDZ = new Dropzone("#myDZ", { acceptedFiles: "image/jpeg", maxFileSize: 1, parallelUploads: 1, paramName: "myFile", resizeWidth: 100, resizeHeight: 100, resizeMimeType: "image/jpeg", resizeQuality: 0.75, resizeMethod: "contain" });</code>
+    <code>let myDZ = new Dropzone("#myDZ", { acceptedFiles: "image/jpeg", maxFileSize: 1, parallelUploads: 1, paramName: "myFile", resizeWidth: 100, resizeHeight: 100, resizeMimeType: "image/jpeg", resizeQuality: 0.75, resizeMethod: "contain" });</code>
 </p>
 
 <script>
     // Disable auto-discovery of Dropzone.js instances to allow manual initialization
-	Dropzone.autoDiscover = false;
+    Dropzone.autoDiscover = false;
 
     // Initialize Dropzone with custom options
-	const myDZ = new Dropzone("#myDZ", {
-		acceptedFiles: "image/jpeg",  // Only allow JPEG files
-		maxFileSize: 1,               // Limit file size to 1 MB
-		parallelUploads: 1,           // Allow only one file to be uploaded at a time
-		paramName: "myFile",          // Name of the file input in the request
-		resizeWidth: 256,             // Resize image width to 256 pixels
-		resizeHeight: 256,            // Resize image height to 256 pixels
-		resizeMimeType: "image/jpeg", // Maintain JPEG format
-		resizeQuality: 0.5,           // Set image quality to 50%
-		resizeMethod: "contain"       // Use "contain" resize method to fit within dimensions
-	});
+    const myDZ = new Dropzone("#myDZ", {
+        acceptedFiles: "image/jpeg", // Only allow JPEG files
+        maxFileSize: 1, // Limit file size to 1 MB
+        parallelUploads: 1, // Allow only one file to be uploaded at a time
+        paramName: "myFile", // Name of the file input in the request
+        resizeWidth: 256, // Resize image width to 256 pixels
+        resizeHeight: 256, // Resize image height to 256 pixels
+        resizeMimeType: "image/jpeg", // Maintain JPEG format
+        resizeQuality: 0.5, // Set image quality to 50%
+        resizeMethod: "contain" // Use "contain" resize method to fit within dimensions
+    });
 </script>
