@@ -1,3 +1,5 @@
+## This now forms part of [github.com/byuwur/spa.php](https://github.com/byuwur/spa.php). This repo will no longer be maintained to keep this in order in the base repo it is used. [This repo can also be used standalone]
+
 # Easy Dropzone PHP
 
 `byuwur/easy-dropzone-php` is a simple project that demonstrates how to use Dropzone.js to implement a single file upload functionality in PHP. The uploaded file will be resized and stored in a specified directory.
