@@ -33,8 +33,10 @@ if ($file["error"] !== UPLOAD_ERR_OK)
 if (!isset($file["tmp_name"], $file["size"]) || !is_string($file["tmp_name"]))
   fail_upload(400, "Invalid upload.");
 // Enforce the 1 MB limit on the server as well
-if ($file["size"] <= 0 || $file["size"] > 1024 * 1024)
-  fail_upload(413, "The file exceeds the 1 MB limit.");
+$size_limit = 4;
+$size_max = 1024 * 1024 * $size_limit; // 4MB
+if ($file["size"] <= 0 || $file["size"] > $size_max)
+  fail_upload(413, "The file exceeds the {$size_limit}MB limit.");
 // Verify that PHP actually received this file through an HTTP upload
 if (!is_uploaded_file($file["tmp_name"]))
   fail_upload(400, "Invalid upload.");
