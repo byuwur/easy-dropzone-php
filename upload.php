@@ -42,16 +42,21 @@ if (!is_uploaded_file($file["tmp_name"]))
   fail_upload(400, "Invalid upload.");
 // Validate the actual file type instead of trusting the original filename or browser MIME type
 $finfo = new finfo(FILEINFO_MIME_TYPE);
-if ($finfo->file($file["tmp_name"]) !== "image/jpeg") {
-  fail_upload(415, "Only JPEG images are allowed.");
-}
+$mime_type = $finfo->file($file["tmp_name"]);
+$extensions = [
+  "image/jpeg" => "jpg",
+  "image/png" => "png"
+];
+if (!isset($extensions[$mime_type]))
+  fail_upload(415, "Only JPEG and PNG images are allowed.");
+$extension = $extensions[$mime_type];
 // Check if the "files/" directory exists, if not, create it
 $directory = __DIR__ . DIRECTORY_SEPARATOR . "files";
 if (!is_dir($directory) && !mkdir($directory, 0755, true) && !is_dir($directory)) {
   fail_upload(500, "Unable to create the upload directory.");
 }
-// Store every accepted upload with a fixed .jpg extension
-$destination = $directory . DIRECTORY_SEPARATOR . $id . ".jpg";
+// Store the upload using the extension that matches its validated MIME type
+$destination = $directory . DIRECTORY_SEPARATOR . $id . "." . $extension;
 if (!move_uploaded_file($file["tmp_name"], $destination)) {
   fail_upload(500, "Unable to save the uploaded file.");
 }
