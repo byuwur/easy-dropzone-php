@@ -44,7 +44,7 @@ $safe_id = htmlspecialchars($id, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
   const myDZ = new Dropzone("#myDZ", {
     acceptedFiles: "image/jpeg,image/png", // Only allow JPEG and PNG files
     maxFilesize: 4, // Limit file size to 4MB
-    maxFiles: 1, // Allow only one file in the Dropzone
+    //maxFiles: 1, // Allow only one file in the Dropzone (Removing it will replace the file with the last upload)
     parallelUploads: 1, // Upload only one file at a time
     paramName: "myFile", // Name of the file input in the request
     resizeWidth: 256, // Resize image width to fit within 256 pixels

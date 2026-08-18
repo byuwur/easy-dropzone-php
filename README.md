@@ -2,46 +2,53 @@
 
 # Easy Dropzone PHP
 
-`byuwur/easy-dropzone-php` is a simple project that demonstrates how to use Dropzone.js to implement a single file upload functionality in PHP. The uploaded file will be resized and stored in a specified directory.
+`byuwur/easy-dropzone-php` is a simple project that demonstrates how to use Dropzone.js to implement single-file image uploads in PHP. Uploaded images are resized and stored in a specified directory.
+
+> Although this example is configured for JPEG and PNG images, Dropzone and the PHP upload handler can be configured to accept other file types by adjusting the client- and server-side allowlists.
 
 ## Features
 
--   **Single file upload:** Allows the user to upload a single image file.
--   **File validation:** Accepts only JPEG files with a maximum size of 1 MB.
--   **Image resizing:** Resizes the uploaded image to 256x256 pixels.
--   **Simple integration:** Uses Dropzone.js for the frontend and PHP for handling the upload on the backend.
+- **Single file upload:** Allows the user to upload a single image file.
+- **File validation:** Accepts JPEG and PNG files with a maximum size of 4 MB.
+- **Image resizing:** Resizes uploaded images to fit within 256x256 pixels while preserving their aspect ratio.
+- **Dynamic extensions:** Saves validated JPEG files as `.jpg` and PNG files as `.png`.
+- **Server-side validation:** Validates the upload size and detected MIME type before saving the file.
+- **Simple integration:** Uses Dropzone.js for the frontend and PHP for handling the upload on the backend.
 
 ## Project Structure
 
--   `dropzone/` - Contains Dropzone.js and its stylesheet.
-    -   `dropzone.min.css` - The Dropzone stylesheet.
-    -   `dropzone.min.js` - The Dropzone JavaScript library.
--   `index.php` - The main page where the Dropzone form is implemented.
--   `upload.php` - The server-side script that handles the file upload.
+- `dropzone/` - Contains Dropzone.js and its stylesheet.
+  - `dropzone.min.css` - The Dropzone stylesheet.
+  - `dropzone.min.js` - The Dropzone JavaScript library.
+- `index.php` - The main page where the Dropzone form is implemented.
+- `upload.php` - The server-side script that handles the file upload.
 
 ## Usage
 
 1. Open `index.php` in a web browser and pass an ID as a GET parameter. For example:
 
-    http://localhost/easy-dropzone-php/index.php?id=999
+   http://localhost/easy-dropzone-php/index.php?id=999
 
-2. Drag and drop an image file into the Dropzone area on the page.
+2. Drag and drop a JPEG or PNG image into the Dropzone area on the page.
 
-3. The image will be automatically uploaded and saved in the `files/` directory with the specified ID as its filename.
+3. The image will be automatically uploaded and saved in the `files/` directory using the specified ID and the extension determined from its validated MIME type.
 
 ## Implementation Details
 
-The `index.php` file checks if an ID is passed through a GET request and then initializes the Dropzone instance. The file includes:
+The `index.php` file checks if an ID is passed through a GET request, validates it for safe use as a filename, and then initializes the Dropzone instance. The file includes:
 
--   A link to the Dropzone stylesheet and script.
--   A form element with the Dropzone class where files can be dropped.
--   A JavaScript block to customize Dropzone behavior, such as resizing the image and setting the accepted file type.
+- A link to the Dropzone stylesheet and script.
+- A form element with the Dropzone class where an image can be dropped.
+- A JavaScript block to customize Dropzone behavior, including the accepted image types, file size limit, single-file limit, and image resizing.
 
 The `upload.php` script handles the uploaded file by:
 
--   Validates the filename.
--   Creates a `files/` directory if it doesn't exist.
--   Moves the uploaded file to the `files/` directory with the specified ID as its filename.
+- Validating the requested filename.
+- Checking the PHP upload status and file size.
+- Detecting and validating the actual MIME type of the uploaded image.
+- Mapping the validated MIME type to the corresponding `.jpg` or `.png` extension.
+- Creating a `files/` directory if it doesn't exist.
+- Moving the uploaded file to the `files/` directory with the specified ID and validated extension as its filename.
 
 ## License
 

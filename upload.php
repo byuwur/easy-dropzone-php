@@ -32,7 +32,7 @@ if ($file["error"] !== UPLOAD_ERR_OK)
   fail_upload(400, "The upload failed.");
 if (!isset($file["tmp_name"], $file["size"]) || !is_string($file["tmp_name"]))
   fail_upload(400, "Invalid upload.");
-// Enforce the 1 MB limit on the server as well
+// Enforce the size limit on the server as well
 $size_limit = 4;
 $size_max = 1024 * 1024 * $size_limit; // 4MB
 if ($file["size"] <= 0 || $file["size"] > $size_max)
@@ -51,7 +51,7 @@ if (!isset($extensions[$mime_type]))
   fail_upload(415, "Only JPEG and PNG images are allowed.");
 $extension = $extensions[$mime_type];
 // Check if the "files/" directory exists, if not, create it
-$directory = __DIR__ . DIRECTORY_SEPARATOR . "files";
+$directory = __DIR__ . DIRECTORY_SEPARATOR . "uploads";
 if (!is_dir($directory) && !mkdir($directory, 0755, true) && !is_dir($directory)) {
   fail_upload(500, "Unable to create the upload directory.");
 }
