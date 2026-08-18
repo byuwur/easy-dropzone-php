@@ -35,7 +35,7 @@ $safe_id = htmlspecialchars($id, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
 
 <p>The <b>image</b> will be automatically uploaded once selected.</p>
 <p>This was the implementation object, use it wisely:<br>
-  <code>const myDZ = new Dropzone("#myDZ", { acceptedFiles: "image/jpeg,image/png", maxFilesize: 4, maxFiles: 1, parallelUploads: 1, paramName: "myFile", resizeWidth: 256, resizeHeight: 256, resizeQuality: 0.5, resizeMethod: "contain" });</code>
+  <code>const myDZ = new Dropzone("#myDZ", { acceptedFiles: "image/jpeg,image/png", maxFilesize: 4, parallelUploads: 1, paramName: "myFile", resizeWidth: 256, resizeHeight: 256, resizeQuality: 0.5, resizeMethod: "contain" });</code>
 </p>
 
 <script>

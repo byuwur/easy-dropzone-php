@@ -16,11 +16,15 @@
 
 ## Project Structure
 
-- `dropzone/` - Contains Dropzone.js and its stylesheet.
+- `dropzone/` - Contains Dropzone.js v5.9.3 and its stylesheet.
   - `dropzone.min.css` - The Dropzone stylesheet.
   - `dropzone.min.js` - The Dropzone JavaScript library.
 - `index.php` - The main page where the Dropzone form is implemented.
 - `upload.php` - The server-side script that handles the file upload.
+
+## Requirements
+
+- PHP with the `fileinfo` extension enabled (required for MIME type detection in `upload.php`).
 
 ## Usage
 
@@ -30,7 +34,7 @@
 
 2. Drag and drop a JPEG or PNG image into the Dropzone area on the page.
 
-3. The image will be automatically uploaded and saved in the `files/` directory using the specified ID and the extension determined from its validated MIME type.
+3. The image will be automatically uploaded and saved in the `uploads/` directory using the specified ID and the extension determined from its validated MIME type.
 
 ## Implementation Details
 
@@ -46,8 +50,8 @@ The `upload.php` script handles the uploaded file by:
 - Checking the PHP upload status and file size.
 - Detecting and validating the actual MIME type of the uploaded image.
 - Mapping the validated MIME type to the corresponding `.jpg` or `.png` extension.
-- Creating a `files/` directory if it doesn't exist.
-- Moving the uploaded file to the `files/` directory with the specified ID and validated extension as its filename.
+- Creating an `uploads/` directory if it doesn't exist.
+- Moving the uploaded file to the `uploads/` directory with the specified ID and validated extension as its filename.
 
 ## License
 
