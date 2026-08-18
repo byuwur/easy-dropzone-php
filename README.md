@@ -2,13 +2,12 @@
 
 # Easy Dropzone PHP
 
-`byuwur/easy-dropzone-php` is a simple project that demonstrates how to use Dropzone.js to implement single-file image uploads in PHP. Uploaded images are resized and stored in a specified directory.
+`byuwur/easy-dropzone-php` is a simple project that demonstrates how to use Dropzone.js to implement image uploads in PHP. Uploaded images are resized and stored in a specified directory.
 
 > Although this example is configured for JPEG and PNG images, Dropzone and the PHP upload handler can be configured to accept other file types by adjusting the client- and server-side allowlists.
 
 ## Features
 
-- **Single file upload:** Allows the user to upload a single image file.
 - **File validation:** Accepts JPEG and PNG files with a maximum size of 4 MB.
 - **Image resizing:** Resizes uploaded images to fit within 256x256 pixels while preserving their aspect ratio.
 - **Dynamic extensions:** Saves validated JPEG files as `.jpg` and PNG files as `.png`.

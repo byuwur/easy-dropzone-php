@@ -22,9 +22,10 @@ $safe_id = htmlspecialchars($id, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
 
 <h1>SINGLE FILE DROPZONE</h1>
 <p>ID (also serves as filename) = <b><?= $safe_id; ?></b></p>
-<p>The <b>file</b> will be uploaded to a folder named "files/" next to this index.php file. Go check it out!</p>
+<p>The <b>file</b> will be uploaded to a folder named "uploads/" next to this index.php file. Go check it out!</p>
 <p style="color:crimson;">*The <b>image</b> must have a maximum size of <b>four (4) megabytes</b>.</p>
 <p style="color:crimson;">*The <b>image</b> must be a <b>JPEG or PNG</b> format.</p>
+<p style="color:crimson;">*Please note that the <b>last image</b> you upload will <b>replace the previous one</b>.</p>
 
 <!-- Dropzone form for file upload -->
 <form id="myDZ" class="dropzone" action="upload.php">
